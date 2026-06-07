@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакт — Portfolio</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">T<span>.</span>dev</a>
+  <ul class="nav-links">
+    <li><a href="/">Главная</a></li>
+    <li><a href="/portfolio">Проекты</a></li>
+    <li><a href="/contact">Контакт</a></li>
+  </ul>
+</nav>
+
+<main style="padding-top: 120px;">
+  <div class="container">
+    <p class="section-label">// давай общаться</p>
+    <h2 class="section-title">Контакт</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Открыт к новым проектам и интересным задачам. Пишите — отвечу быстро.</p>
+        <div class="contact-links">
+          <a href="mailto:tbibarsov80@gmail.com" class="contact-link">
+            <span class="contact-link-dot"></span>
+            tbibarsov80@gmail.com
+          </a>
+          <a href="https://github.com/Snakemat1" class="contact-link">
+            <span class="contact-link-dot"></span>
+            github.com/Snakemat1
+          </a>
+          <a href="https://t.me/barbariki1322" class="contact-link">
+            <span class="contact-link-dot"></span>
+            t.me/barbariki1322
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <div class="form-group">
+          <label class="form-label">Имя</label>
+          <input type="text" id="f-name" class="form-input" placeholder="Иван Иванов">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="f-email" class="form-input" placeholder="ivan@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Сообщение</label>
+          <textarea id="f-message" class="form-textarea" placeholder="Расскажите о проекте..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="sendForm()">Отправить →</button>
+        <p class="form-status" id="form-status"></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>Timur · Python Junior Developer</p>
+  </div>
+</footer>
+
+<script src="/static/js/contact.js"></script>
+</body>
+</html>

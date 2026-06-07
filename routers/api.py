@@ -22,12 +22,12 @@ def about():
     return {
         "name": "Timur",
         "profession": "Python Junior Developer",
-        "skills": ["Python", "GIT", "FastAPI"],
+        "skills": ["Python(python-telegram-bot, Pydantic, pytest)", "GIT", "FastAPI", "Docker", "Redis", "PostgreSQL"],
     }
 
 projects = [
-    {"id": 1, "title": "Мой первый проект", "stack": ["Python", "FastAPI"]},
-    {"id": 2, "title": "Второй проект",     "stack": ["Docker"]},
+    {"id": 1, "title": "Бот знакомств", "description": "Аналог популярного бота знакомств 'Дайвинчик'. ", "stack": ["Python", "python-telegram-bot", "redis", "PostgreSQL", "pytest", "pydantic", "Alembic", "SQLalchemi", "Docker"], "github": "https://github.com/Snakemat1/tinder"},
+    {"id": 2, "title": "Сайт-визитка", "description": "Персональный сайт-портфолио на FastAPI с Jinja2-шаблонами, статикой и формой обратной связи.",    "stack": ["FastAPI", "Jinja2", "Python", "Pydantic"], "github": "https://github.com/Snakemat1/visit_fastAPI"},
 ]
 
 @router.get("/project/{project_id}")

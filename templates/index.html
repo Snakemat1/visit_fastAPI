@@ -1,23 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ name }} — Portfolio</title>
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1 class="whoami">Привет, я {{ name }}</h1>
-    <p class="profession">Моя профессия: {{ profession }} </p>
-    <h2 class="Скилы">Мои скилы: </h2>
-    <ul class="скилы">
+
+<nav>
+  <a href="/" class="nav-logo">T<span>.</span>dev</a>
+  <ul class="nav-links">
+    <li><a href="/">Главная</a></li>
+    <li><a href="/portfolio">Проекты</a></li>
+    <li><a href="/contact">Контакт</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <p class="hero-tag">// доступен для работы</p>
+      <h1 class="hero-name">{{ name }}</h1>
+      <p class="hero-title"><span>{{ profession }}</span> — пишу бэкенд, который работает.</p>
+
+      <div class="hero-skills">
         {% for skill in skills %}
-            <li class="skill">{{ skill }}</li>
+          <span class="skill-tag">{{ skill }}</span>
         {% endfor %}
-    </ul>
+      </div>
 
+      <div class="hero-cta">
+        <a href="/portfolio" class="btn btn-primary">Посмотреть проекты</a>
+        <a href="/contact" class="btn btn-outline">Написать мне</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-    
-    
+<footer>
+  <div class="container">
+    <p>{{ name }} · {{ profession }} · {{ skills | join(', ') }}</p>
+  </div>
+</footer>
+
 </body>
 </html>

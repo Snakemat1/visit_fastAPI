@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проекты — Portfolio</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">T<span>.</span>dev</a>
+  <ul class="nav-links">
+    <li><a href="/">Главная</a></li>
+    <li><a href="/portfolio">Проекты</a></li>
+    <li><a href="/contact">Контакт</a></li>
+  </ul>
+</nav>
+
+<main style="padding-top: 120px;">
+  <div class="container">
+    <p class="section-label">// мои работы</p>
+    <h2 class="section-title">Проекты</h2>
+
+    <div class="projects-grid">
+      {% for project in projects %}
+      <a href="{{project.github}}" class="project-card">
+        <div class="project-header">
+          <span class="project-num">{{ "%02d" % loop.index }}</span>
+          <span class="project-arrow">↗</span>
+        </div>
+        <h3 class="project-title">{{ project.title }}</h3>
+       
+        <p class="project-desc">{{ project.description if project.description else "Python проект" }} </p>
+        <div class="project-stack">
+          {% for tech in project.stack %}
+            <span class="stack-tag">{{ tech }}</span>
+          {% endfor %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>Timur · Python Junior Developer</p>
+  </div>
+</footer>
+
+</body>
+</html>
