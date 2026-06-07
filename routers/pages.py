@@ -10,7 +10,7 @@ templates = Jinja2Templates(directory="templates")
 def index(request: Request):
     return templates.TemplateResponse(request,"index.html", {
         "name": "Timur",
-        "profession": "Python Junior Developer",
+        "profession": "Python Developer",
         "skills": ["Python(python-telegram-bot, Pydantic, pytest)", "GIT", "FastAPI", "Docker", "Redis", "PostgreSQL"]
     })
 

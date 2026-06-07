@@ -1,8 +1,9 @@
-from fastapi import APIRouter
-from fastapi import HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 
 from pydantic import BaseModel
-
+import crud
+from sqlalchemy.orm import Session
+from database import get_db
 
 router = APIRouter(prefix="/api", tags = ["api"])
 
@@ -21,7 +22,7 @@ class ContactForm(BaseModel):
 def about():
     return {
         "name": "Timur",
-        "profession": "Python Junior Developer",
+        "profession": "Python Developer",
         "skills": ["Python(python-telegram-bot, Pydantic, pytest)", "GIT", "FastAPI", "Docker", "Redis", "PostgreSQL"],
     }
 
@@ -31,21 +32,18 @@ projects = [
 ]
 
 @router.get("/project/{project_id}")
-def get_project(project_id: int):
-    project = next((p for p in projects if p["id"] == project_id), None)
-    if project is None:
-        raise HTTPException(status_code=404, detail="Проект не найден")
-    return project
+def get_project(project_id: int, db: Session = Depends(get_db)):
+    return crud.get_project(db, project_id)
+  
+    
+@router.get("/projects")
+def get_projects(db: Session = Depends(get_db)):
+    return crud.get_projects(db)
 
-@router.get("/projects", response_model=list[Project])
-def get_projects(limit: int=10):
-    return projects[:limit]
 
 @router.post("/contact")
-def contact(form: ContactForm):
-    if form.name == "" or not form.message.strip():
-        raise HTTPException(status_code=400, detail="Имя не может быть пустым")
-    return {"status": "ok", "form": form.name}
+def contact(form: ContactForm, db: Session = Depends(get_db)):
+    return crud.create_message(db, form.name, form.email, form.message)
 
 
 
